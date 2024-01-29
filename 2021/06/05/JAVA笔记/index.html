@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,zh-TW,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lym0518.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="无限期停更">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA笔记">
+<meta property="og:url" content="https://lym0518.cn/2021/06/05/JAVA%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="TeFantasyEssay">
+<meta property="og:description" content="无限期停更">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210211160730699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dwOTIzMDMzMzc0,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210211163106702.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dwOTIzMDMzMzc0,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210212123649444.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210212125602165.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dwOTIzMDMzMzc0,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210212125616778.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210212130324711.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210212130339804.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210212130601735.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021021213061740.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210213122552591.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210213122431899.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210213122644967.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021041813403010.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dwOTIzMDMzMzc0,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210604203435862.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dwOTIzMDMzMzc0,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="article:published_time" content="2021-06-05T13:20:57.000Z">
+<meta property="article:modified_time" content="2022-06-06T14:07:05.357Z">
+<meta property="article:author" content="TeFantasy">
+<meta property="article:tag" content="study">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210211160730699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dwOTIzMDMzMzc0,size_16,color_FFFFFF,t_70">
+
+<link rel="canonical" href="https://lym0518.cn/2021/06/05/JAVA%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JAVA笔记 | TeFantasyEssay</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">TeFantasyEssay</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">心之所向，素履以往</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lym0518.cn/2021/06/05/JAVA%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="TeFantasy">
+      <meta itemprop="description" content="一个人的小博客,个人的成长记录文章，java, JAVA, 前端, HTML, CSS, 博客, TeFantasy, yarn, JDBC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TeFantasyEssay">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JAVA笔记
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-05 21:20:57" itemprop="dateCreated datePublished" datetime="2021-06-05T21:20:57+08:00">2021-06-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-06 22:07:05" itemprop="dateModified" datetime="2022-06-06T22:07:05+08:00">2022-06-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">无限期停更</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ol>
+<li>单行注释：只能注释一行文字。用法:// + 注释</li>
+<li>多行注释：能注释一段文字。用法:/<em>+ 内容 +</em>/</li>
+<li>文档注释：javaDoc.用法:/** + 内容 + */</li>
+</ol>
+<h3 id="标识符和关键字"><a href="#标识符和关键字" class="headerlink" title="标识符和关键字"></a>标识符和关键字</h3><p><img src="https://img-blog.csdnimg.cn/20210211160730699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dwOTIzMDMzMzc0,size_16,color_FFFFFF,t_70" alt="截图"><br><strong>标识符是大小写敏感的。</strong></p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p><img src="https://img-blog.csdnimg.cn/20210211163106702.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dwOTIzMDMzMzc0,size_16,color_FFFFFF,t_70" alt="截图"><br>定义字符串用String，它是一个类。</p>
+<h3 id="数据类型扩展"><a href="#数据类型扩展" class="headerlink" title="数据类型扩展"></a>数据类型扩展</h3><h3 id="整数拓展"><a href="#整数拓展" class="headerlink" title="整数拓展"></a>整数拓展</h3><p><strong>进制</strong><br>二进制0b 十进制0 八进制 十六进制0x</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">i1</span> <span class="operator">=</span> <span class="number">010</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">i2</span> <span class="operator">=</span> <span class="number">0x10</span>;</span><br><span class="line">System.out.println(i);</span><br><span class="line">System.out.println(i1);</span><br><span class="line">System.out.println(i2);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20210212123649444.png#pic_center" alt="截图"></p>
+<h3 id="浮点数拓展"><a href="#浮点数拓展" class="headerlink" title="浮点数拓展"></a>浮点数拓展</h3><p>flout double<br>少用浮点数进行比较<br>浮点数有舍入误差<br>结果为大约数<br><img src="https://img-blog.csdnimg.cn/20210212125602165.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dwOTIzMDMzMzc0,size_16,color_FFFFFF,t_70" alt="截图"><br><img src="https://img-blog.csdnimg.cn/20210212125616778.png" alt="截图"></p>
+<h3 id="字符拓展"><a href="#字符拓展" class="headerlink" title="字符拓展"></a>字符拓展</h3><p>涉及编码问题<br>Unicode编码 占两个字节<br>97=a 65=A<br>表示范围<br>U0000-UFFFF<br><img src="https://img-blog.csdnimg.cn/20210212130324711.png" alt="截图"><br><img src="https://img-blog.csdnimg.cn/20210212130339804.png" alt="截图"></p>
+<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><ol>
+<li>\t 制表符</li>
+<li>\n 换行<br><img src="https://img-blog.csdnimg.cn/20210212130601735.png" alt="截图"><br><img src="https://img-blog.csdnimg.cn/2021021213061740.png" alt="截图"></li>
+</ol>
+<h3 id="布尔值扩展"><a href="#布尔值扩展" class="headerlink" title="布尔值扩展"></a>布尔值扩展</h3><p>刚开始用第一种<br>熟悉了用第二种</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">home</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (home==<span class="literal">true</span>)&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;======================================&quot;</span>);</span><br><span class="line">    &#125;<span class="comment">//第一种</span></span><br><span class="line">    <span class="keyword">if</span> (home)&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;======================================&quot;</span>);</span><br><span class="line">    &#125;<span class="comment">//第二种</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>代码要精简易读。</strong></p>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>低————————高<br>byte-&gt;short-&gt;char-&gt;int-&gt;long-&gt;float-&gt;double</p>
+<ol>
+<li>值的大小超出数据类型所规定的范围会数据溢出。</li>
+<li>强制转换 （类型）变量名 高————低</li>
+<li>自动转换  变量名 低————高</li>
+</ol>
+<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><ol>
+<li>不能对布尔值进行转换</li>
+<li>不能把类型转换为不相干的类型</li>
+<li>在把高容量转向低容量的时候强制转换</li>
+<li>转换时可能存在内存溢出或精度问题<br>jdk7新特性，数字间可加下划线</li>
+</ol>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>定义：可以变化的量<br>三要素：变量名，变量类型，作用域。</p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ol>
+<li>每个变量都有类型，类型可以是基本类型，也可以是引用类型。</li>
+<li>变量名必须是合法标识符。</li>
+<li>变量声明必须是完整的语句，每个声明结尾要以分号结束。</li>
+</ol>
+<h4 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h4><p>关键词：static</p>
+<ol>
+<li><p>类变量<br><img src="https://img-blog.csdnimg.cn/20210213122552591.png" alt="截图"></p>
+</li>
+<li><p>实例变量（在类里面，方法外面。变量类型，变量名字）<img src="https://img-blog.csdnimg.cn/20210213122431899.png" alt="截图"></p>
+</li>
+<li><p>局部变量（在方法里面，必须声明和初始化值）<img src="https://img-blog.csdnimg.cn/20210213122644967.png" alt="截图"></p>
+</li>
+<li><p>变量初始值为0，0.0，0000<br>布尔值初始值为false<br>除了基本类型，其余值都为null</p>
+</li>
+</ol>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>final 常量+值</p>
+<h4 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h4><ol>
+<li>所有变量，方法，类名，见名知意</li>
+<li>类成员变量：首字母小写，驼峰原则。除了第一个单词意外，后面的单词首字母大写</li>
+<li>局部变量：同类成员变量</li>
+<li>常量：大写字母和下划线</li>
+<li>类名：首字母大写，驼峰原则</li>
+<li>方法名：同类成员变量。</li>
+</ol>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>算术：+  -   <em>/  ++ –<br>赋值：=<br>关系：&gt; &lt; == &gt;= &lt;= != instanceof<br>逻辑运算符：&amp;&amp; || ！<br>位运算符：&amp; | ^ ~ &gt;&gt; &lt;&lt; &gt;&gt;&gt; (了解)<br>条件：？  ：<br>扩展运算：+=  -=</em>=  /=<br>ctrl+d:复制当前行到下一行。<br>计算时有long型，结果为long型<br>没有其余为int类型。<br>cast：转换<br>取余，也叫模运算。<br>a++:先输出a，再自增1<br>++a:先加一再输出a</p>
+<h3 id="Java-doc"><a href="#Java-doc" class="headerlink" title="Java doc"></a>Java doc</h3><ol>
+<li>@author 作者名</li>
+<li>@version 版本号</li>
+<li>@since 指明需要最早使用的jdk版本</li>
+<li>@param 参数名</li>
+<li>@return 返回值情况</li>
+<li>@throws 异常抛出情况</li>
+</ol>
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a><a target="_blank" rel="noopener" href="https://github.com/lym0518/java/tree/main/ceshi%201/src/com/Java/LiuChengKongZhi">流程控制</a></h2><h3 id="用户交互Scanner"><a href="#用户交互Scanner" class="headerlink" title="用户交互Scanner"></a>用户交互Scanner</h3><p>类名 java.util.Scanner</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">next()</span><br><span class="line">nextLine()</span><br><span class="line">//获取输入字符串</span><br><span class="line">hasNext()</span><br><span class="line">hasNextLine()</span><br><span class="line">//判断是否还有输入数据</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ol>
+<li>声明一个数组<br>例：int[] nums;</li>
+<li>创建一个数组<br>例：nums = new int[10]; （中括号里是数组的大小数量）  </li>
+<li>获取数组的长度<br>例：nums.length  </li>
+</ol>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><ol>
+<li>存放new的对象和数组</li>
+<li>可以被所有线程共享，不会存放别的对象引用</li>
+</ol>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><ol>
+<li>存放基本变量类型（也包含这个基本类型的数值）</li>
+<li>引用对象的变量（会存放这个引用在堆里面的具体地址）</li>
+</ol>
+<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><ol>
+<li>可以被所有线程共享</li>
+<li>包含了所有的class和static变量</li>
+</ol>
+<h3 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h3><ol>
+<li>ArrayIndexOutOfBoundsException：（数组下标越界异常）</li>
+</ol>
+<h3 id="数组三种初始化状态"><a href="#数组三种初始化状态" class="headerlink" title="数组三种初始化状态"></a>数组三种初始化状态</h3><ol>
+<li>静态初始化<br>int[] a={1,5,2,4,6,3};<br>一旦创建长度跟括号内元素个数有关，且确定。</li>
+<li>动态初始化<br>int[] a=new int[10];<br>a[1]=8;<br>a[2]=2;</li>
+<li>数组的默认初始化<br>初始化值为0；</li>
+</ol>
+<h3 id="数组四个基本特点"><a href="#数组四个基本特点" class="headerlink" title="数组四个基本特点"></a>数组四个基本特点</h3><p><img src="https://img-blog.csdnimg.cn/2021041813403010.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dwOTIzMDMzMzc0,size_16,color_FFFFFF,t_70" alt="基本特点"></p>
+<ol>
+<li>其长度是确定的。数组一旦被创建，它的大小就不可以被改变。</li>
+<li>其元素必须是相同类型，不允许出现混合类型。</li>
+<li>数组中的元素可以是任意数据类型，包括基本类型和引用类型。</li>
+<li>数组变量属引用类型，数组也可以看成是对象，数组中的每个元素相当于该对象的成员变量。数组本身就是对象，Java中对象是在堆中的，因此数组无论保存原始类型还是其他对象类型,<strong>数组对象本身是在堆中的。</strong></li>
+</ol>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ol>
+<li>数组是相同数据类型（数据类型可以为任意类型）的有序集合。</li>
+<li>数组也是对象，数组元素相当于对象的成员变量</li>
+<li>数组长度是确定的，是不可改变的。如果越界，则报错：ArrayIndexOutOfBoundsException：(数组下标越界异常 )。</li>
+</ol>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><h3 id="初识面向对象"><a href="#初识面向对象" class="headerlink" title="初识面向对象"></a>初识面向对象</h3><ol>
+<li>物以类聚，分类的思维模式</li>
+<li>属性+方法=类</li>
+</ol>
+<p><strong>对于描述复杂的事物，为了从宏观上把握，从整体上合理分析，我们需要使用面向对象的思路来分析整个系统。但是，具体到微观操作，仍然需要面向过程的思路去处理。</strong></p>
+<h4 id="什么是面向对象"><a href="#什么是面向对象" class="headerlink" title="什么是面向对象"></a>什么是面向对象</h4><ol>
+<li>面向对象编程（oop）</li>
+<li><strong>本质:以类的方式组织代码，以对象的组织(封装)数据</strong></li>
+<li>抽象（类似提取）</li>
+<li>三大特性  <ol>
+<li>封装  </li>
+<li>继承  </li>
+<li>多态</li>
+</ol>
+</li>
+<li>从认识来考虑，先有对象后有类</li>
+<li>从代码运行考虑，先有类后有对象</li>
+</ol>
+<h3 id="类与对象的关系"><a href="#类与对象的关系" class="headerlink" title="类与对象的关系"></a>类与对象的关系</h3><p><strong>&emsp;&emsp;类是一种抽象的数据类型，它是对某一类事物整体描述或定义，但是并不能代表某一个具体的事物<br>&emsp;&emsp;对象是抽象概念的具体实例</strong></p>
+<h4 id="创建与初始化"><a href="#创建与初始化" class="headerlink" title="创建与初始化"></a>创建与初始化</h4><ol>
+<li>使用new关键字船创建对象的时候，除了分配内存空间，还会给创建好的对象进行默认的初始化以及对类中构造器的调用</li>
+<li>构造器特点:  <ol>
+<li>必须和类名字相同</li>
+<li>必须没有返回类型，也不能写void</li>
+</ol>
+</li>
+<li>构造器的两个作用  <ol>
+<li>使用new关键字，本质是在调用构造器</li>
+<li>有参构造：一旦定义有参构造，无参就必须显示定义  </li>
+</ol>
+</li>
+</ol>
+<p><strong>定义了有参构造，如果想使用无参构造，显示的定义一个无参的构造。</strong>  </p>
+<h3 id="创建对象内存分析"><a href="#创建对象内存分析" class="headerlink" title="创建对象内存分析"></a>创建对象内存分析</h3><p>内存图：<br><img src="https://img-blog.csdnimg.cn/20210604203435862.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dwOTIzMDMzMzc0,size_16,color_FFFFFF,t_70#pic_center" alt="内存"></p>
+<h2 id="小结：类与对象"><a href="#小结：类与对象" class="headerlink" title="小结：类与对象"></a>小结：类与对象</h2><ol>
+<li>类是一个模板，抽象，对象是一个具体的实例。</li>
+<li>方法，定义，调用</li>
+<li>对应的引用：<ul>
+<li>引用类型：基本类型（8）</li>
+<li>对象是通过引用来操作的：栈—-》堆</li>
+</ul>
+</li>
+<li>属性：字段，成员变量。<ul>
+<li>默认初始化：</li>
+<li>数字：0</li>
+<li>char：u0000</li>
+<li>boolean:false</li>
+<li>引用：null</li>
+<li>赋值：</li>
+<li>修饰符 属性类型 属性名=属性值</li>
+</ul>
+</li>
+<li>对象的创建和使用<ul>
+<li>必须使用new关键字创造对象 构造器</li>
+<li>对象的属性</li>
+<li>对象的方法</li>
+</ul>
+</li>
+<li>类<ul>
+<li>静态的属性 属性</li>
+<li>动态的行为 方法</li>
+</ul>
+</li>
+</ol>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><ol>
+<li>该露的露该藏的藏<br>程序设计要求“高内聚，低耦合”。高内聚指类的内部数据操作细节自己完成，不允许外部干涉；低耦合指尽暴露少量的方法给外部使用。</li>
+<li>封装（数据的隐藏）<br>通常，应禁止直接访问一个对象中数据的直接表示，而应通过操作接口来访问，这称为信息隐藏<br>相关关键字：private（私有）<br>set（赋值）<br>get（获得）</li>
+</ol>
+<h3 id="封装的作用"><a href="#封装的作用" class="headerlink" title="封装的作用"></a>封装的作用</h3><ol>
+<li>提高程序安全性，保护数据。</li>
+<li>隐藏代码的实现细节</li>
+<li>统一接口</li>
+<li>增加系统可维护  </li>
+</ol>
+<p>一句话：属性私有 get/set  </p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>super注意点：</p>
+<ol>
+<li>super调用父类的构造方法，必须在构造方法的第一个</li>
+<li>super必须只能出现在子类的方法或者构造方法中</li>
+<li>super和this不能同时调用构造方法</li>
+</ol>
+<p>与this的区别：<br>&emsp;&emsp;代表的对象不同 ：<br>&emsp;&emsp;&emsp;&emsp;this：本身调用这个对象<br>&emsp;&emsp;&emsp;&emsp;super：代表父类对象的运用<br>&emsp;&emsp;前提<br>&emsp;&emsp;&emsp;&emsp;this：没有继承也可以使用<br>&emsp;&emsp;&emsp;&emsp;super：只能在继承条件下使用<br>&emsp;&emsp;构造方法<br>&emsp;&emsp;&emsp;&emsp;this（）：本类的构造<br>&emsp;&emsp;&emsp;&emsp;super（）：父类的构造  </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/study/" rel="tag"># study</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/10/15/HTMLCSS%E7%AC%94%E8%AE%B0/" rel="next" title="HTMLCSS随笔记录">
+      HTMLCSS随笔记录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">1.1.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6%E5%92%8C%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.2.</span> <span class="nav-text">标识符和关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%89%A9%E5%B1%95"><span class="nav-number">1.4.</span> <span class="nav-text">数据类型扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E6%8B%93%E5%B1%95"><span class="nav-number">1.5.</span> <span class="nav-text">整数拓展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E6%8B%93%E5%B1%95"><span class="nav-number">1.6.</span> <span class="nav-text">浮点数拓展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E6%8B%93%E5%B1%95"><span class="nav-number">1.7.</span> <span class="nav-text">字符拓展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="nav-number">1.8.</span> <span class="nav-text">转义字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E5%80%BC%E6%89%A9%E5%B1%95"><span class="nav-number">1.9.</span> <span class="nav-text">布尔值扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.10.</span> <span class="nav-text">类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">1.10.1.</span> <span class="nav-text">注意点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">1.11.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">1.11.1.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">1.11.2.</span> <span class="nav-text">变量作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F"><span class="nav-number">1.11.3.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="nav-number">1.11.4.</span> <span class="nav-text">命名规范</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.12.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-doc"><span class="nav-number">1.13.</span> <span class="nav-text">Java doc</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92Scanner"><span class="nav-number">2.1.</span> <span class="nav-text">用户交互Scanner</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">2.2.</span> <span class="nav-text">数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98"><span class="nav-number">3.</span> <span class="nav-text">内存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86"><span class="nav-number">3.1.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88"><span class="nav-number">3.2.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="nav-number">3.3.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF"><span class="nav-number">3.4.</span> <span class="nav-text">错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E4%B8%89%E7%A7%8D%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8A%B6%E6%80%81"><span class="nav-number">3.5.</span> <span class="nav-text">数组三种初始化状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%9B%9B%E4%B8%AA%E5%9F%BA%E6%9C%AC%E7%89%B9%E7%82%B9"><span class="nav-number">3.6.</span> <span class="nav-text">数组四个基本特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.7.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.</span> <span class="nav-text">面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E8%AF%86%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.1.</span> <span class="nav-text">初识面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.1.1.</span> <span class="nav-text">什么是面向对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">4.2.</span> <span class="nav-text">类与对象的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">4.2.1.</span> <span class="nav-text">创建与初始化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90"><span class="nav-number">4.3.</span> <span class="nav-text">创建对象内存分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93%EF%BC%9A%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1"><span class="nav-number">5.</span> <span class="nav-text">小结：类与对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%81%E8%A3%85"><span class="nav-number">6.</span> <span class="nav-text">封装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">6.1.</span> <span class="nav-text">封装的作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">7.</span> <span class="nav-text">继承</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">TeFantasy</p>
+  <div class="site-description" itemprop="description">一个人的小博客,个人的成长记录文章，java, JAVA, 前端, HTML, CSS, 博客, TeFantasy, yarn, JDBC</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TeFantasy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+    <p>
+        <img src="https://cdn.jsdelivr.net/gh/lym0518/BlogPicture/imageicon120.png" height="25px">
+        <a href="https://icp.gov.moe" target="_blank">萌ICP备20211859号</a>
+    </p>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
